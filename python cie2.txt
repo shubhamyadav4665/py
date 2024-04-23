@@ -1,0 +1,290 @@
+15.)
+def get_matrix():
+    return [[float(input(f"Enter element {(j+1)} of row {(i+1)}: ")) for j in range(int(input("Enter the number of columns: ")))] for i in range(int(input("Enter the number of rows: ")))]
+
+def print_matrix(matrix):
+    for row in matrix:
+        print(row)
+
+def main():
+    operation = input("Enter the operation you want to perform (+ for addition, - for subtraction, * for multiplication): ")
+    matrix1 = get_matrix()
+    matrix2 = get_matrix()
+
+    result = [[sum(a * b for a, b in zip(row1, col2)) for col2 in zip(*matrix2)] for row1 in matrix1] if operation == '*' else [[eval(f'{x}{operation}{y}') for x, y in zip(row1, row2)] for row1, row2 in zip(matrix1, matrix2)]
+    
+    print("\nResultant Matrix:")
+    print_matrix(result)
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+14.)
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+
+class Dog(Animal):
+    def speak(self):
+        print("Dog barks")
+
+
+class Cat(Animal):
+    def speak(self):
+        print("Cat meows")
+
+
+class Cow(Animal):
+    pass  
+
+
+animal = Animal()
+dog = Dog()
+cat = Cat()
+cow = Cow()
+
+animal.speak()  
+dog.speak()
+cat.speak()
+cow.speak()
+
+
+
+13.)
+class Area:
+    @classmethod
+    def find_area(cls, *args):
+        if len(args) == 1: return 3.14159 * args[0] ** 2  
+        elif len(args) == 2: return args[0] * args[1] 
+        elif len(args) == 3:
+            a, b, c = args
+            s = (a + b + c) / 2
+            return (s * (s - a) * (s - b) * (s - c)) ** 0.5  
+        else: return "Unsupported shape or incorrect number of arguments"
+
+
+area_calculator = Area()
+radius = float(input("Enter the radius of the circle: "))
+print("Area of the circle:", area_calculator.find_area(radius))
+length, width = map(float, input("Enter the length and width of the rectangle: ").split())
+print("Area of the rectangle:", area_calculator.find_area(length, width))
+a, b, c = map(float, input("Enter the lengths of the triangle sides: ").split())
+print("Area of the triangle:", area_calculator.find_area(a, b, c))
+
+
+
+12.)
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def display(self):
+        print("Name:", self.name)
+
+
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name)
+        self.breed = breed
+
+    def display(self):
+        super().display()
+        print("Breed:", self.breed)
+
+
+class Cat(Animal):
+    def __init__(self, name, color):
+        super().__init__(name)
+        self.color = color
+
+    def display(self):
+        super().display()
+        print("Color:", self.color)
+
+
+if __name__ == "__main__":
+    dog = Dog("Buddy", "Labrador")
+    cat = Cat("Whiskers", "White")
+
+    dog.display()
+    print()
+    cat.display()
+
+
+
+11.)
+class Employee:
+    def __init__(self):
+        self.emp_name = ""
+        self.emp_age = 0
+        self.emp_city = ""
+    
+    def get_data(self):
+        self.emp_name = input("Enter employee name: ")
+        self.emp_age = int(input("Enter employee age: "))
+        self.emp_city = input("Enter employee city: ")
+
+class EmpDerived(Employee):
+    def __init__(self):
+        super().__init__()
+    
+    def __str__(self):
+        return f"Employee Name: {self.emp_name}\nEmployee Age: {self.emp_age}\nEmployee City: {self.emp_city}"
+
+if __name__ == "__main__":
+    emp = EmpDerived()
+    emp.get_data()
+    print("\nEmployee Information:")
+    print(emp)
+
+
+
+
+
+10.)
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(*args):
+    result = 1
+    for num in args:
+        result *= num
+    return result
+
+def divide(x, y):
+    if y == 0:
+        return "Cannot divide by zero!"
+    else:
+        return x / y
+
+def calculator():
+    print("Welcome to Simple Calculator")
+    print("Operations:")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+
+    choice = input("Enter choice (1/2/3/4): ")
+
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+
+    if choice == '1':
+        print("Result:", add(num1, num2))
+    elif choice == '2':
+        print("Result:", subtract(num1, num2))
+    elif choice == '3':
+        print("Result:", multiply(num1, num2))
+    elif choice == '4':
+        print("Result:", divide(num1, num2))
+    else:
+        print("Invalid Input")
+
+calculator()
+
+
+
+
+9.)
+i.)
+rows = 5
+
+for i in range(1, rows + 1):
+    for j in range(1, i + 1):
+        print(j, end=" ")
+    print()
+
+
+
+ii.)
+rows = 5
+number = 1
+
+for i in range(1, rows + 1):
+    for j in range(1, i + 1):
+        print(number, end=" ")
+        number += 1
+    print()
+
+
+
+iii.)rows = 5
+
+for i in range(1, rows + 1):
+   
+    for j in range(1, rows - i + 1):
+        print(" ", end="")
+    
+    
+    for k in range(1, i + 1):
+        print("* ", end="")
+    
+    print()
+
+
+
+
+iv.
+n = 5
+for i in range(n):
+    for j in range(i+1):
+        print(chr(65 + i), end="  ")
+    print()
+
+
+
+
+8.)
+i.) 
+if-else: Program to check whether the string is Symmetrical or Palindrome
+
+string = "radar"
+if string == string[::-1]:
+    print("String is symmetrical.")
+else:
+    print("String is not symmetrical.")
+
+if string == string[::-1]:
+    print("String is palindrome.")
+else:
+    print("String is not palindrome.")
+
+
+
+ii.) 
+for loop: Program to multiply two matrices using nested loops
+
+matrix1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+matrix2 = [[9, 8, 7], [6, 5, 4], [3, 2, 1]]
+result_matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+for i in range(len(matrix1)):
+    for j in range(len(matrix2[0])):
+        for k in range(len(matrix2)):
+            result_matrix[i][j] += matrix1[i][k] * matrix2[k][j]
+
+print("Result of matrix multiplication:")
+for row in result_matrix:
+    print(row)
+
+
+
+iii.) 
+while loop: Program to reverse the number
+
+number = 12345
+reversed_number = 0
+while number > 0:
+    digit = number % 10
+    reversed_number = (reversed_number * 10) + digit
+    number //= 10
+
+print(f"Reversed number of 12345 is: {reversed_number}")
